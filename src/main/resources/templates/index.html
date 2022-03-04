@@ -1,0 +1,867 @@
+
+<!doctype html>
+<html lang="en" ang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"></head>
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header Container
+    ================================================== -->
+	<header id="header-container" class="fullwidth" th:replace="common/header :: navbar">
+	</header>
+	<div class="clearfix"></div>
+	<!-- Header Container / End -->
+
+
+	<!-- Intro Banner
+    ================================================== -->
+	<div class="intro-banner dark-overlay" data-background-image="images/home-background-02.jpg">
+
+		<!-- Transparent Header Spacer -->
+		<div class="transparent-header-spacer"></div>
+
+		<div class="container">
+
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+				<a sec:authorize="isAnonymous()" th:href="@{/login}"
+				   class="button button-sliding-icon ripple-effect">Se connecter <i
+						class="icon-material-outline-arrow-right-alt"></i></a>
+
+				<a sec:authorize="isAuthenticated()" th:href="@{/postJob}"
+				   class="button button-sliding-icon ripple-effect">Poster une offre de ménage<i
+						class="icon-material-outline-arrow-right-alt"></i></a>
+
+				<a sec:authorize="isAuthenticated()" th:href="@{/logout}"
+				   class="button button-sliding-icon ripple-effect">Proposer votre service <i
+						class="icon-material-outline-arrow-right-alt"></i></a>
+
+			</div>
+			<!-- Intro Headline -->
+			<div class="row">
+				<div class="col-md-12">
+
+
+
+
+
+				</div>
+			</div>
+
+			<!-- Search Bar -->
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="banner-headline">
+						<h3>
+							<strong>Prenez du temps pour vous</strong>
+							<br>
+							<span>Menage et cuisine pour vous chez vous. Trouvez des hommes et des femmes dévoués sur
+                                <strong class="color">Menagechezvous</strong></span>
+						</h3>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Stats -->
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="intro-stats margin-top-45 hide-under-992px">
+						<li>
+							<strong class="counter">1586</strong>
+							<span>Jobs Posted</span>
+						</li>
+
+						<li>
+							<strong class="counter">1232</strong>
+							<span>Freelancers</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Content
+    ================================================== -->
+
+	<!-- Popular Job Categories -->
+	<div class="section margin-top-65 margin-bottom-30">
+		<div class="container">
+			<div class="row">
+
+				<!-- Section Headline -->
+				<div class="col-xl-12">
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+	<!-- Features Cities / End -->
+
+
+
+	<!-- Features Jobs -->
+	<div class="section gray margin-top-45 padding-top-65 padding-bottom-75" th:each="post : ${listOfRequest}">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12">
+
+					<!-- Section Headline -->
+					<div class="section-headline margin-top-0 margin-bottom-35" >
+						<h3 class="text-primary">Les recentes  annonces </h3>
+
+					</div>
+
+					<!-- Jobs Container -->
+					<div class="tasks-list-container compact-list margin-top-35">
+
+						<!-- Task -->
+						<a th:href="@{/jobDetail?id=}+${post.id}" class="task-listing">
+
+							<!-- Job Listing Details -->
+							<div class="task-listing-details">
+
+								<!-- Details -->
+								<div class="task-listing-description">
+									<h3 class="task-listing-title text-muted ">Annonce</h3>
+									<ul class="task-icons">
+										<li th:text="'Besoin: ' + ${post.jobTitle}"><i class="icon-material-outline-business"></i> San Francisco</li>
+
+										<i class="icon-material-outline-date-range"></i>  <li  th:text="'Date: ' + ${post.dateOfWork}">  </li>
+
+
+
+
+										<i class="icon-material-outline-location-on"></i>  <li  th:text="'Localisation: ' + ${post.jobLocation}"> </li>
+
+
+										<i class="icon-feather-home"></i>   <li th:text="'Superficie: ' + ${post.size} + ' m²'"> </li>
+
+										<i class="icon-line-awesome-clock-o"></i>   <li th:text="'Temps du travail: ' + ${post.duration} + ' h'"> </li>
+
+
+										<li th:text="'Budget: ' + ${post.budget} +' €'"> </li>
+
+									</ul>
+
+
+								</div>
+
+							</div>
+
+							<div class="task-listing-bid">
+								<div class="task-listing-bid-inner">
+									<div class="task-offers" th:text="'Budget: ' + ${post.budget} +' €'">
+										<strong>$1,000 - $2,500</strong>
+										<span>Fixed Price</span>
+									</div>
+									<span class="button button-sliding-icon ripple-effect">Voir détail<i class="icon-material-outline-arrow-right-alt"></i></span>
+								</div>
+							</div>
+						</a>
+
+
+
+
+
+
+
+
+					</div>
+					<!-- Jobs Container / End -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Featured Jobs / End -->
+
+	<!-- Icon Boxes -->
+	<div class="section padding-top-65 padding-bottom-65">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-xl-12">
+					<!-- Section Headline -->
+					<div class="section-headline centered margin-top-0 margin-bottom-5">
+						<h3>How It Works?</h3>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-md-4">
+					<!-- Icon Box -->
+					<div class="icon-box with-line">
+						<!-- Icon -->
+						<div class="icon-box-circle">
+							<div class="icon-box-circle-inner">
+								<i class="icon-line-awesome-lock"></i>
+								<div class="icon-box-check"><i class="icon-material-outline-check"></i></div>
+							</div>
+						</div>
+						<h3>Create an Account</h3>
+						<p>Bring to the table win-win survival strategies to ensure proactive domination going forward.</p>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-md-4">
+					<!-- Icon Box -->
+					<div class="icon-box with-line">
+						<!-- Icon -->
+						<div class="icon-box-circle">
+							<div class="icon-box-circle-inner">
+								<i class="icon-line-awesome-legal"></i>
+								<div class="icon-box-check"><i class="icon-material-outline-check"></i></div>
+							</div>
+						</div>
+						<h3>Post a Task</h3>
+						<p>Efficiently unleash cross-media information without. Quickly maximize return on investment.</p>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-md-4">
+					<!-- Icon Box -->
+					<div class="icon-box">
+						<!-- Icon -->
+						<div class="icon-box-circle">
+							<div class="icon-box-circle-inner">
+								<i class=" icon-line-awesome-trophy"></i>
+								<div class="icon-box-check"><i class="icon-material-outline-check"></i></div>
+							</div>
+						</div>
+						<h3>Choose an Expert</h3>
+						<p>Nanotechnology immersion along the information highway will close the loop on focusing solely.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Icon Boxes / End -->
+
+
+
+
+
+
+
+	<!-- Highest Rated Freelancers -->
+	<div class="section gray padding-top-65 padding-bottom-70 full-width-carousel-fix">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-xl-12">
+					<!-- Section Headline -->
+					<div class="section-headline margin-top-0 margin-bottom-25">
+						<h3>Highest Rated Freelancers</h3>
+						<a href="freelancers-grid-layout.html" class="headline-link">Browse All Freelancers</a>
+					</div>
+				</div>
+
+				<div class="col-xl-12">
+					<div class="default-slick-carousel freelancers-container freelancers-grid-layout">
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner" >
+
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<div class="verified-badge"></div>
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-big-01.jpg" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="single-freelancer-profile.html">Tom Smith <img class="flag" src="images/flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
+										<span>UI/UX Designer</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="5.0"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li> Location <strong><i class="icon-material-outline-location-on"></i> London</strong></li>
+										<li>Rate <strong>$60 / hr</strong></li>
+										<li>Job Success <strong>95%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<div class="verified-badge"></div>
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-big-02.jpg" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="#">David Peterson <img class="flag" src="images/flags/de.svg" alt="" title="Germany" data-tippy-placement="top"></a></h4>
+										<span>iOS Expert + Node Dev</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="5.0"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li>Location <strong><i class="icon-material-outline-location-on"></i> Berlin</strong></li>
+										<li>Rate <strong>$40 / hr</strong></li>
+										<li>Job Success <strong>88%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-placeholder.png" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="#">Marcin Kowalski <img class="flag" src="images/flags/pl.svg" alt="" title="Poland" data-tippy-placement="top"></a></h4>
+										<span>Front-End Developer</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="4.9"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li>Location <strong><i class="icon-material-outline-location-on"></i> Warsaw</strong></li>
+										<li>Rate <strong>$50 / hr</strong></li>
+										<li>Job Success <strong>100%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<div class="verified-badge"></div>
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-big-03.jpg" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="#">Sindy Forest <img class="flag" src="images/flags/au.svg" alt="" title="Australia" data-tippy-placement="top"></a></h4>
+										<span>Magento Certified Developer</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="5.0"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li>Location <strong><i class="icon-material-outline-location-on"></i> Brisbane</strong></li>
+										<li>Rate <strong>$70 / hr</strong></li>
+										<li>Job Success <strong>100%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-placeholder.png" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="#">Sebastiano Piccio <img class="flag" src="images/flags/it.svg" alt="" title="Italy" data-tippy-placement="top"></a></h4>
+										<span>Laravel Dev</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="4.5"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li>Location <strong><i class="icon-material-outline-location-on"></i> Milan</strong></li>
+										<li>Rate <strong>$80 / hr</strong></li>
+										<li>Job Success <strong>89%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+						<!--Freelancer -->
+						<div class="freelancer">
+
+							<!-- Overview -->
+							<div class="freelancer-overview">
+								<div class="freelancer-overview-inner">
+									<!-- Bookmark Icon -->
+									<span class="bookmark-icon"></span>
+
+									<!-- Avatar -->
+									<div class="freelancer-avatar">
+										<a href="single-freelancer-profile.html"><img src="images/user-avatar-placeholder.png" alt=""></a>
+									</div>
+
+									<!-- Name -->
+									<div class="freelancer-name">
+										<h4><a href="#">Gabriel Lagueux <img class="flag" src="images/flags/fr.svg" alt="" title="France" data-tippy-placement="top"></a></h4>
+										<span>WordPress Expert</span>
+									</div>
+
+									<!-- Rating -->
+									<div class="freelancer-rating">
+										<div class="star-rating" data-rating="5.0"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Details -->
+							<div class="freelancer-details">
+								<div class="freelancer-details-list">
+									<ul>
+										<li>Location <strong><i class="icon-material-outline-location-on"></i> Paris</strong></li>
+										<li>Rate <strong>$50 / hr</strong></li>
+										<li>Job Success <strong>100%</strong></li>
+									</ul>
+								</div>
+								<a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+							</div>
+						</div>
+						<!-- Freelancer / End -->
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Highest Rated Freelancers / End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Testimonials -->
+	<div class="section gray padding-top-65 padding-bottom-55">
+
+		<div class="container">
+
+
+
+			<div class="row">
+				<div class="col-xl-12">
+					<!-- Section Headline -->
+					<div class="section-headline centered margin-top-0 margin-bottom-5">
+						<h3>Testimonials</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Categories Carousel -->
+		<div class="fullwidth-carousel-container margin-top-20">
+			<div class="testimonial-carousel testimonials">
+
+				<!-- Item -->
+				<div class="fw-carousel-review">
+					<div class="testimonial-box">
+						<div class="testimonial-avatar">
+							<img src="images/user-avatar-small-02.jpg" alt="">
+						</div>
+						<div class="testimonial-author">
+							<h4>Sindy Forest</h4>
+							<span>Freelancer</span>
+						</div>
+						<div class="testimonial">Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</div>
+					</div>
+				</div>
+
+				<!-- Item -->
+				<div class="fw-carousel-review">
+					<div class="testimonial-box">
+						<div class="testimonial-avatar">
+							<img src="images/user-avatar-small-01.jpg" alt="">
+						</div>
+						<div class="testimonial-author">
+							<h4>Tom Smith</h4>
+							<span>Freelancer</span>
+						</div>
+						<div class="testimonial">Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art.</div>
+					</div>
+				</div>
+
+				<!-- Item -->
+				<div class="fw-carousel-review">
+					<div class="testimonial-box">
+						<div class="testimonial-avatar">
+							<img src="images/user-avatar-placeholder.png" alt="">
+						</div>
+						<div class="testimonial-author">
+							<h4>Sebastiano Piccio</h4>
+							<span>Employer</span>
+						</div>
+						<div class="testimonial">Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art.</div>
+					</div>
+				</div>
+
+				<!-- Item -->
+				<div class="fw-carousel-review">
+					<div class="testimonial-box">
+						<div class="testimonial-avatar">
+							<img src="images/user-avatar-small-03.jpg" alt="">
+						</div>
+						<div class="testimonial-author">
+							<h4>David Peterson</h4>
+							<span>Freelancer</span>
+						</div>
+						<div class="testimonial">Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services. Seamlessly empower fully researched growth strategies and interoperable sources.</div>
+					</div>
+				</div>
+
+				<!-- Item -->
+				<div class="fw-carousel-review">
+					<div class="testimonial-box">
+						<div class="testimonial-avatar">
+							<img src="images/user-avatar-placeholder.png" alt="">
+						</div>
+						<div class="testimonial-author">
+							<h4>Marcin Kowalski</h4>
+							<span>Freelancer</span>
+						</div>
+						<div class="testimonial">Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Categories Carousel / End -->
+
+	</div>
+	<!-- Testimonials / End -->
+
+
+	<!-- Counters -->
+	<div class="section padding-top-70 padding-bottom-75">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-xl-12">
+					<div class="counters-container">
+
+						<!-- Counter -->
+						<div class="single-counter">
+							<i class="icon-line-awesome-suitcase"></i>
+							<div class="counter-inner">
+								<h3><span class="counter">1,586</span></h3>
+								<span class="counter-title">Jobs Posted</span>
+							</div>
+						</div>
+
+						<!-- Counter -->
+						<div class="single-counter">
+							<i class="icon-line-awesome-legal"></i>
+							<div class="counter-inner">
+								<h3><span class="counter">3,543</span></h3>
+								<span class="counter-title">Tasks Posted</span>
+							</div>
+						</div>
+
+						<!-- Counter -->
+						<div class="single-counter">
+							<i class="icon-line-awesome-user"></i>
+							<div class="counter-inner">
+								<h3><span class="counter">2,413</span></h3>
+								<span class="counter-title">Active Members</span>
+							</div>
+						</div>
+
+						<!-- Counter -->
+						<div class="single-counter">
+							<i class="icon-line-awesome-trophy"></i>
+							<div class="counter-inner">
+								<h3><span class="counter">99</span>%</h3>
+								<span class="counter-title">Satisfaction Rate</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Counters / End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Spacer -->
+	<div class="margin-top-15"></div>
+	<!-- Spacer / End-->
+
+	<!-- Footer
+    ================================================== -->
+	<div id="footer" th:replace="common/header :: footer"></div>
+	<!-- Footer / End -->
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Make an Offer Popup
+================================================== -->
+<div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+
+	<!--Tabs -->
+	<div class="sign-in-form">
+
+		<ul class="popup-tabs-nav">
+			<li><a href="#tab">Make an Offer</a></li>
+		</ul>
+
+		<div class="popup-tabs-container">
+
+			<!-- Tab -->
+			<div class="popup-tab-content" id="tab">
+
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3>Discuss your project with David</h3>
+				</div>
+
+				<!-- Form -->
+				<form method="post">
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-outline-account-circle"></i>
+						<input type="text" class="input-text with-border" name="name" id="name" placeholder="First and Last Name"/>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-baseline-mail-outline"></i>
+						<input type="text" class="input-text with-border" name="emailaddress" id="emailaddress" placeholder="Email Address"/>
+					</div>
+
+					<textarea name="textarea" cols="10" placeholder="Message" class="with-border"></textarea>
+
+					<div class="uploadButton margin-top-25">
+						<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload" multiple/>
+						<label class="uploadButton-button ripple-effect" for="upload">Add Attachments</label>
+						<span class="uploadButton-file-name">Allowed file types: zip, pdf, png, jpg <br> Max. files size: 50 MB.</span>
+					</div>
+
+				</form>
+
+				<!-- Button -->
+				<button class="button margin-top-35 full-width button-sliding-icon ripple-effect" type="submit">Make an Offer <i class="icon-material-outline-arrow-right-alt"></i></button>
+
+			</div>
+			<!-- Login -->
+			<div class="popup-tab-content" id="loginn">
+
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3>Discuss Your Project With Tom</h3>
+				</div>
+
+				<!-- Form -->
+				<form method="post" id="make-an-offer-form">
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-outline-account-circle"></i>
+						<input type="text" class="input-text with-border" name="name2" id="name2" placeholder="First and Last Name" required/>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-baseline-mail-outline"></i>
+						<input type="text" class="input-text with-border" name="emailaddress2" id="emailaddress2" placeholder="Email Address" required/>
+					</div>
+
+					<textarea name="textarea" cols="10" placeholder="Message" class="with-border"></textarea>
+
+					<div class="uploadButton margin-top-25">
+						<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload-cv" multiple/>
+						<label class="uploadButton-button" for="upload-cv">Add Attachments</label>
+						<span class="uploadButton-file-name">Allowed file types: zip, pdf, png, jpg <br> Max. files size: 50 MB.</span>
+					</div>
+
+				</form>
+
+				<!-- Button -->
+				<button class="button full-width button-sliding-icon ripple-effect" type="submit" form="make-an-offer-form">Make an Offer <i class="icon-material-outline-arrow-right-alt"></i></button>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- Make an Offer Popup / End -->
+
+
+
+<!-- Scripts
+================================================== -->
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-migrate-3.3.2.min.js"></script>
+<script src="js/mmenu.min.js"></script>
+<script src="js/tippy.all.min.js"></script>
+<script src="js/simplebar.min.js"></script>
+<script src="js/bootstrap-slider.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/snackbar.js"></script>
+<script src="js/clipboard.min.js"></script>
+<script src="js/counterup.min.js"></script>
+<script src="js/magnific-popup.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/custom.js"></script>
+
+<!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
+<script>
+	// Snackbar for user status switcher
+	$('#snackbar-user-status label').click(function() {
+		Snackbar.show({
+			text: 'Your status has been changed!',
+			pos: 'bottom-center',
+			showAction: false,
+			actionText: "Dismiss",
+			duration: 3000,
+			textColor: '#fff',
+			backgroundColor: '#383838'
+		});
+	});
+
+	// Snackbar for "place a bid" button
+	$('#snackbar-place-bid').click(function() {
+		Snackbar.show({
+			text: 'Your bid has been placed!',
+		});
+	});
+
+
+	// Snackbar for copy to clipboard button
+	$('.copy-url-button').click(function() {
+		Snackbar.show({
+			text: 'Copied to clipboard!',
+		});
+	});
+</script>
+
+</body>
+</html>
