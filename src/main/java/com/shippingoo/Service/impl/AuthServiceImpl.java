@@ -113,7 +113,7 @@ public class AuthServiceImpl implements AuthService {
 
             return ResponseEntity.ok(loginFeedback);
         } catch (BadCredentialsException e) {
-            return ResponseEntity.ok(new FeedbackMessage(e.getLocalizedMessage()));
+           throw new BadCredentialsException(e.getLocalizedMessage());
         }
     }
 

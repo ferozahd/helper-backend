@@ -30,6 +30,12 @@ public class User{
     private String email;
     private String phone;
 
+    private String city;
+    private String country;
+    private String postcode;
+    private String address;
+    private String aboutme;
+    
     private String photo;
 
     private boolean acexpired;
