@@ -3,16 +3,11 @@ package com.shippingoo.controller;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-import com.shippingoo.Resource.Auth.PostApprovedToken;
-import com.shippingoo.Resource.Auth.PostCreateUser;
-import com.shippingoo.Resource.Auth.PostLogin;
-import com.shippingoo.Resource.Auth.PostRegistrationResources;
+import com.shippingoo.resource.auth.*;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 
 @RequestMapping("/auth")

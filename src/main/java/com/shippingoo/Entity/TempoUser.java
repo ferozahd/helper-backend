@@ -1,4 +1,4 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 import java.time.LocalDateTime;
 
@@ -9,9 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 import com.shippingoo.enums.auth.TypeUser;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -33,5 +35,12 @@ public class TempoUser {
     private String username;
     @Column(nullable =  false,unique = true)
     private String token;
+
+    @Setter(AccessLevel.NONE)
     private LocalDateTime createdat;
+
+    @PrePersist
+    private void onCreate(){
+        this.createdat=LocalDateTime.now();
+    }
 }

@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
-import com.shippingoo.Service.userdetails.CustomUserDetails;
+import com.shippingoo.service.userdetails.CustomUserDetails;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,7 +63,7 @@ public class JWTTokenHelper {
 			throws InvalidKeySpecException, NoSuchAlgorithmException {
 
 		Map<String, Object> claims = new HashMap<>();
-		com.shippingoo.Service.userdetails.CustomUserDetails customUserDetails = (CustomUserDetails) authentication
+		CustomUserDetails customUserDetails = (CustomUserDetails) authentication
 				.getPrincipal();
 		// claims.put("userId",customUserDetails.getId());
 

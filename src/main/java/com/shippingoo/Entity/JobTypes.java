@@ -1,4 +1,4 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

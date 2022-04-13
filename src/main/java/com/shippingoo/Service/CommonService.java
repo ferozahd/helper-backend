@@ -1,4 +1,4 @@
-package com.shippingoo.Service;
+package com.shippingoo.service;
 
 
 public interface CommonService {
@@ -7,5 +7,5 @@ public interface CommonService {
 
     public String getUsernameFromContext();
     public Long getUserIdFromContext();
-
+    public String getFullNameFromContext();
 }

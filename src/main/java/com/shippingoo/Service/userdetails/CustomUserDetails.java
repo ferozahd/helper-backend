@@ -1,10 +1,10 @@
-package com.shippingoo.Service.userdetails;
+package com.shippingoo.service.userdetails;
 
 
 import java.util.Collection;
 import java.util.List;
 
-import com.shippingoo.Entity.User;
+import com.shippingoo.entity.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

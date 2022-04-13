@@ -1,8 +1,8 @@
-package com.shippingoo.Service;
+package com.shippingoo.service;
 
 import java.util.List;
 
-import com.shippingoo.Entity.BuddyList;
+import com.shippingoo.entity.BuddyList;
 
 public interface BuddyListService {
     /* 

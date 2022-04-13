@@ -6,5 +6,6 @@ public class UserContext {
     private String token;
     private String username;
     private Long userId;
+    private String fullname;
 
 }

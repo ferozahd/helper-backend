@@ -1,9 +1,9 @@
-package com.shippingoo.Service.userdetails;
+package com.shippingoo.service.userdetails;
 
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import com.shippingoo.Entity.User;
+import com.shippingoo.entity.User;
 import com.shippingoo.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

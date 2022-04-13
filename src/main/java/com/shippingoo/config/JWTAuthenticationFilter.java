@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shippingoo.Service.userdetails.CustomUserDetails;
+import com.shippingoo.service.userdetails.CustomUserDetails;
 import com.shippingoo.utils.UserContextHolder;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -51,7 +51,8 @@ private Logger log=Logger.getLogger(JWTAuthenticationFilter.class.getName());
 					UserContextHolder.getContext().setToken(authToken);
 					UserContextHolder.getContext().setUsername(customUserDetails.getUsername());
 					UserContextHolder.getContext().setUserId(customUserDetails.getId());
-					
+					UserContextHolder.getContext().setFullname(customUserDetails.getfullName());
+
 					SecurityContextHolder.getContext().setAuthentication(authentication);
 				}
 				

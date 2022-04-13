@@ -1,7 +1,6 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
@@ -25,16 +24,12 @@ public class Message {
 
 
     @Column(updatable = false)
-    private LocalDate createdAt;
-
-    @Column(updatable = false)
-    private LocalTime deliveryTime;
+    private LocalDateTime createdAt;
 
 
     @PrePersist
     private void onCreate() {
-        createdAt = LocalDate.now();
-        deliveryTime = LocalTime.now();
+        createdAt = LocalDateTime.now();
     }
 
 }

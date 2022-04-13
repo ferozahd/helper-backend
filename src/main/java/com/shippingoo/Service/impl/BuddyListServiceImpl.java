@@ -1,15 +1,14 @@
-package com.shippingoo.Service.impl;
+package com.shippingoo.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import com.shippingoo.Entity.BuddyList;
-import com.shippingoo.Entity.User;
-import com.shippingoo.Mapper.BuddyMapper;
-import com.shippingoo.Service.BuddyListService;
-import com.shippingoo.Service.CommonService;
+import com.shippingoo.entity.BuddyList;
+import com.shippingoo.entity.User;
+import com.shippingoo.mapper.BuddyMapper;
+import com.shippingoo.service.BuddyListService;
+import com.shippingoo.service.CommonService;
 import com.shippingoo.exceptions.OperationFailed;
 import com.shippingoo.exceptions.ResourceNotFoundException;
 import com.shippingoo.repository.BuddylistRepository;

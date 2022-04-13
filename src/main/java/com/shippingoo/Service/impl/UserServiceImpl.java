@@ -1,15 +1,16 @@
-package com.shippingoo.Service.impl;
+package com.shippingoo.service.impl;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.logging.Logger;
 
-import com.shippingoo.Entity.User;
-import com.shippingoo.Mapper.UserMapper;
-import com.shippingoo.Resource.user.GetMeResources;
-import com.shippingoo.Resource.user.PatchUserResources;
-import com.shippingoo.Service.BuddyListService;
-import com.shippingoo.Service.CommonService;
-import com.shippingoo.Service.UserService;
+import com.shippingoo.entity.User;
+import com.shippingoo.mapper.UserMapper;
+import com.shippingoo.resource.user.GetMeResources;
+import com.shippingoo.resource.user.PatchUserResources;
+import com.shippingoo.service.BuddyListService;
+import com.shippingoo.service.CommonService;
+import com.shippingoo.service.UserService;
 import com.shippingoo.Service.storage.StorageService;
 import com.shippingoo.exceptions.OperationFailed;
 import com.shippingoo.exceptions.ResourceNotFoundException;
@@ -39,6 +40,7 @@ public class UserServiceImpl implements UserService {
         if (findUser.isPresent()) {
 
             GetMeResources getMeResources = userMapper.getMeResources(findUser.get());
+            getMeResources.setProfilepicture(findUser.get().getPhoto()==null?"http://localhost:5000/files/get/default.jpg":findUser.get().getPhoto());
             /*
              * After checking every thing if user is valid with jwt token then user will be
              * found here
@@ -48,6 +50,7 @@ public class UserServiceImpl implements UserService {
             /*
              * find hangedMessage here
              */
+
             getMeResources.setHangedMessage(buddyListService.getHanggedMessageNumber());
             /*
              * find hangedNotification here
@@ -77,13 +80,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean updateProfilePicture(MultipartFile file) {
 
-            User user = userRepository.findByUsername(commonService.getUsernameFromContext()).get();
+        User user = userRepository.findByUsername(commonService.getUsernameFromContext()).get();
 
-            String filename = user.getId().toString() + "." + new Date().getTime() + "." + Math.random() + ".jpg";
-            Boolean profilepicstatus = storageService.save(file, filename);
-            storageService.deleteOne(user.getPhoto().replace("http://localhost:8080/file/get/", ""));
-            user.setPhoto("http://localhost:8080/file/get/"+filename);
-            userRepository.save(user);
+        String filename = user.getId().toString() + "." + new Date().getTime() + "." + Math.random() + ".jpg";
+        Boolean profilepicstatus = storageService.save(file, filename);
+        if (user.getPhoto() != null) {
+            storageService.deleteOne(user.getPhoto().replace("http://localhost:5000/file/get/", ""));
+        }
+        user.setPhoto("http://localhost:5000/file/get/" + filename);
+        userRepository.save(user);
         return profilepicstatus;
     }
 

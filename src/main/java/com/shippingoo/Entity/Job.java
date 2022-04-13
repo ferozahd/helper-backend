@@ -1,10 +1,12 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 @Entity
 @Data
@@ -32,5 +34,13 @@ public class Job {
     private Long applied;
     private String jobDuration;
     // private Graph tag;
+    @Setter(AccessLevel.NONE)
     private LocalDateTime createdAt;
+    
+    
+    @PrePersist
+    private void onCreate(){
+        this.applied=0l;
+        this.createdAt=LocalDateTime.now();
+    }
 }

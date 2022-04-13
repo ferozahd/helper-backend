@@ -2,7 +2,7 @@ package com.shippingoo.repository;
 
 import java.time.LocalDateTime;
 
-import com.shippingoo.Entity.BuddyList;
+import com.shippingoo.entity.BuddyList;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

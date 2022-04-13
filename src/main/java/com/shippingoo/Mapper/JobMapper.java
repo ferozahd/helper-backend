@@ -1,25 +1,25 @@
-package com.shippingoo.Mapper;
+package com.shippingoo.mapper;
 
+import com.shippingoo.resource.job.*;
+import com.shippingoo.resource.jobBid.JobBidGetResource;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.shippingoo.Entity.Job;
-import com.shippingoo.Entity.JobCatagories;
-import com.shippingoo.Entity.JobSubCatagories;
-import com.shippingoo.Entity.JobTypes;
-import com.shippingoo.Resource.job.GetBuyerPendingJobResource;
-import com.shippingoo.Resource.job.GetJobCatagoriesResources;
-import com.shippingoo.Resource.job.GetJobSubCatagoriesResources;
-import com.shippingoo.Resource.job.GetJobTypeResources;
-import com.shippingoo.Resource.job.PostCreateJobResources;
+import com.shippingoo.entity.Job;
+import com.shippingoo.entity.JobBid;
+import com.shippingoo.entity.JobCatagories;
+import com.shippingoo.entity.JobSubCatagories;
+import com.shippingoo.entity.JobTypes;
+import com.shippingoo.resource.jobBid.JobBidPostResources;
 import com.shippingoo.exceptions.InvalidValue;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Named;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper( nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Named("JobMapper")
 public interface JobMapper {
 
     default List<GetJobTypeResources> getTypeResource(List<JobTypes> jobtypes) {
@@ -94,23 +94,22 @@ public interface JobMapper {
             job.setCity(postjob.getCity());
             job.setCountry(postjob.getCountry());
             job.setJobDuration(postjob.getJobDuration());
-            job.setCreatedAt(LocalDateTime.now());
             job.setApplied(0l);
             return job;
         } catch (Exception e) {
-           throw new InvalidValue(e.getLocalizedMessage());
+            throw new InvalidValue(e.getLocalizedMessage());
         }
 
     }
 
-    default List<GetBuyerPendingJobResource> getBuyerpendingResource(List<Job> jobs){
-        if(jobs.size()<0){
+    default List<GetBuyerPendingJobResource> getBuyerpendingResource(List<Job> jobs) {
+        if (jobs.size() < 0) {
             return null;
         }
-        List<GetBuyerPendingJobResource> bprList=new ArrayList<GetBuyerPendingJobResource>();
-        for(int i =0 ; i<jobs.size() ; i++){
-            Job job=jobs.get(i);
-            GetBuyerPendingJobResource bpr=new GetBuyerPendingJobResource();
+        List<GetBuyerPendingJobResource> bprList = new ArrayList<GetBuyerPendingJobResource>();
+        for (int i = 0; i < jobs.size(); i++) {
+            Job job = jobs.get(i);
+            GetBuyerPendingJobResource bpr = new GetBuyerPendingJobResource();
             bpr.setId(job.getId());
             bpr.setDescription(job.getDescription());
             bpr.setBudget(job.getBudget());
@@ -126,4 +125,55 @@ public interface JobMapper {
         return bprList;
     }
 
+    @Named("jobBidPostResourcesToJobBid")
+    default JobBid jobBidPostResourcesToJobBid(JobBidPostResources jobBidPostResources) {
+        if(jobBidPostResources == null){
+            return  null;
+        }
+        JobBid jobBid=new JobBid();
+        jobBid.setSellerBudget(jobBidPostResources.getSellerBudget());
+        jobBid.setSellerLetter(jobBidPostResources.getSellerLetter());
+        jobBid.setSellerDeadline(jobBidPostResources.getSellerDeadline());
+
+        return  jobBid;
+    }
+
+    @Named("jobToGetAJobForSeller")
+    default GetAJobForSeller jobToGetAJobForSeller(Job job){
+        if(job==null){
+            return  null;
+        }
+        GetAJobForSeller gjs=new GetAJobForSeller();
+        gjs.setId(job.getId());
+        gjs.setBuyerId(job.getBuyerId());
+        gjs.setDescription(job.getDescription());
+        gjs.setBudget(job.getBudget());
+        gjs.setCatagoriesId(job.getCatagoriesId());
+        gjs.setSubCatagoriesId(job.getSubCatagoriesId());
+        gjs.setTypeId(job.getTypeId());
+        gjs.setTypeName(job.getTypeName());
+        gjs.setCity(job.getCity());
+        gjs.setCountry(job.getCountry());
+        gjs.setApplied(job.getApplied());
+        gjs.setJobDuration(job.getJobDuration());
+        gjs.setCreatedAt(job.getCreatedAt());
+        return  gjs;
+    }
+
+    @Named("jobBidToJobBidGetResource")
+    default JobBidGetResource jobBidToJobBidGetResource(JobBid jobBid){
+        if(jobBid==null){
+            return  null;
+        }
+
+        JobBidGetResource jbgr=new JobBidGetResource();
+        jbgr.setId(jobBid.getId());
+        jbgr.setJobId(jobBid.getJobId());
+        jbgr.setSellerId(jobBid.getSellerId());
+        jbgr.setSellerBudget(jobBid.getSellerBudget());
+        jbgr.setSellerDeadline(jobBid.getSellerDeadline());
+        jbgr.setSellerLetter(jobBid.getSellerLetter());
+        jbgr.setCreatedAt(jobBid.getCreatedAt());
+        return  jbgr;
+    }
 }

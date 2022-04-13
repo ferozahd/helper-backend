@@ -1,7 +1,7 @@
 package com.shippingoo.config;
 
 
-import com.shippingoo.Service.userdetails.CustomUserDetailsService;
+import com.shippingoo.service.userdetails.CustomUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

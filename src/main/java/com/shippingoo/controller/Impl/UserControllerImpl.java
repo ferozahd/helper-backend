@@ -1,10 +1,10 @@
 package com.shippingoo.controller.Impl;
 
 
-import com.shippingoo.Resource.user.GetMeResources;
-import com.shippingoo.Resource.user.PatchUserResources;
-import com.shippingoo.Service.BuddyListService;
-import com.shippingoo.Service.UserService;
+import com.shippingoo.resource.user.GetMeResources;
+import com.shippingoo.resource.user.PatchUserResources;
+import com.shippingoo.service.BuddyListService;
+import com.shippingoo.service.UserService;
 import com.shippingoo.controller.UserController;
 
 import org.springframework.http.ResponseEntity;

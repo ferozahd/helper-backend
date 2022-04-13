@@ -1,6 +1,6 @@
-package com.shippingoo.Service.impl;
+package com.shippingoo.service.impl;
 
-import com.shippingoo.Service.CommonService;
+import com.shippingoo.service.CommonService;
 import com.shippingoo.utils.UserContextHolder;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +24,10 @@ public class CommponServiceImpl implements CommonService{
         return UserContextHolder.getUserId();
     }
 
+    @Override
+    public String getFullNameFromContext() {
+        return UserContextHolder.getFullName();
+    }
 
 
 }

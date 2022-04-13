@@ -1,4 +1,4 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 import java.time.LocalDate;
 
@@ -33,7 +33,6 @@ public class Notification {
 
 
     @Column(updatable = false, name = "created_at")
-    @CreatedDate
     private LocalDate createdAt;
 
     

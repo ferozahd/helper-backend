@@ -1,13 +1,11 @@
-package com.shippingoo.Service;
+package com.shippingoo.service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 import com.shippingoo.Resource.FeedbackMessage;
-import com.shippingoo.Resource.Auth.PostApprovedToken;
-import com.shippingoo.Resource.Auth.PostCreateUser;
-import com.shippingoo.Resource.Auth.PostLogin;
-import com.shippingoo.Resource.Auth.PostRegistrationResources;
+import com.shippingoo.resource.auth.*;
+
 
 import org.springframework.http.ResponseEntity;
 

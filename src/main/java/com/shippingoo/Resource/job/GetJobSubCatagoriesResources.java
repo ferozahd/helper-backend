@@ -1,4 +1,4 @@
-package com.shippingoo.Resource.job;
+package com.shippingoo.resource.job;
 
 import lombok.Data;
 

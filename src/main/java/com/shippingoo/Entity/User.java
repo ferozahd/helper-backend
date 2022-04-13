@@ -1,14 +1,17 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
 import com.shippingoo.enums.auth.TypeUser;
-
 @Entity
 @Data
-public class User{
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,8 +28,7 @@ public class User{
     @Enumerated(EnumType.STRING)
     private TypeUser role;
 
-
-    @Column(name = "email", nullable = false, updatable = false,unique = true)
+    @Column(name = "email", nullable = false, updatable = false, unique = true)
     private String email;
     private String phone;
 
@@ -35,12 +37,29 @@ public class User{
     private String postcode;
     private String address;
     private String aboutme;
-    
+
+
     private String photo;
 
     private boolean acexpired;
     private boolean aclocked;
     private boolean cdexpired;
     private boolean enabled;
+
+    @Setter(AccessLevel.NONE)
+    private LocalDateTime createdAt;
+    @Setter(AccessLevel.NONE)
+    private LocalDateTime updatedAt;
+
+    @PreUpdate
+    private void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PrePersist
+    private void onCreate() {
+        this.updatedAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
+    }
 
 }

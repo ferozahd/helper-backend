@@ -1,6 +1,6 @@
 package com.shippingoo.exceptions;
 
-import com.shippingoo.Entity.Message;
+import com.shippingoo.entity.Message;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

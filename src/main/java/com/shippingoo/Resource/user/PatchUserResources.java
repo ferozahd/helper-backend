@@ -1,4 +1,4 @@
-package com.shippingoo.Resource.user;
+package com.shippingoo.resource.user;
 
 
 import org.springframework.web.multipart.MultipartFile;

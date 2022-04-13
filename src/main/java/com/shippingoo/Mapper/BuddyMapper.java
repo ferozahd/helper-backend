@@ -1,9 +1,9 @@
-package com.shippingoo.Mapper;
+package com.shippingoo.mapper;
 
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import com.shippingoo.Entity.BuddyList;
-import com.shippingoo.Entity.User;
+import com.shippingoo.entity.BuddyList;
+import com.shippingoo.entity.User;
 
 import org.mapstruct.Mapper;
 
@@ -16,17 +16,11 @@ public interface BuddyMapper {
             return null;
         }
         BuddyList buddylist=new BuddyList();
-         
         buddylist.setSenderId(userid);
-                
-        buddylist.setReceiverPicture(user.getPhoto());
         buddylist.setReceiverId(user.getId());
-        buddylist.setReceiverUsername(user.getUsername());
-        buddylist.setReceiverName(user.getName());
-
         buddylist.setStatus((byte)1);
         buddylist.setLink(link);
-
+        buddylist.setIsRead(false);
         return buddylist;
 
     }

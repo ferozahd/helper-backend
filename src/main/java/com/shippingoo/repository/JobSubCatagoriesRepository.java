@@ -2,7 +2,7 @@ package com.shippingoo.repository;
 
 import java.util.List;
 
-import com.shippingoo.Entity.JobSubCatagories;
+import com.shippingoo.entity.JobSubCatagories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

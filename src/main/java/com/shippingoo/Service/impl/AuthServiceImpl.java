@@ -1,24 +1,18 @@
-package com.shippingoo.Service.impl;
+package com.shippingoo.service.impl;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.transaction.Transactional;
 
-import com.shippingoo.Entity.TempoUser;
-import com.shippingoo.Entity.User;
+import com.shippingoo.entity.TempoUser;
+import com.shippingoo.entity.User;
 import com.shippingoo.Resource.FeedbackMessage;
-import com.shippingoo.Resource.Auth.GetApprovedResources;
-import com.shippingoo.Resource.Auth.LoginFeedback;
-import com.shippingoo.Resource.Auth.PostApprovedToken;
-import com.shippingoo.Resource.Auth.PostCreateUser;
-import com.shippingoo.Resource.Auth.PostLogin;
-import com.shippingoo.Resource.Auth.PostRegistrationResources;
-import com.shippingoo.Service.AuthService;
+import com.shippingoo.resource.auth.*;
+
+import com.shippingoo.service.AuthService;
 import com.shippingoo.config.JWTTokenHelper;
 import com.shippingoo.exceptions.EmailAlreadyExist;
 import com.shippingoo.exceptions.InvalidValue;
@@ -26,8 +20,8 @@ import com.shippingoo.exceptions.OperationFailed;
 import com.shippingoo.exceptions.UsernameAlreadyExist;
 import com.shippingoo.repository.TempUserRepository;
 import com.shippingoo.repository.UserRepository;
-import com.shippingoo.Mapper.TempUserMapper;
-import com.shippingoo.Mapper.UserMapper;
+import com.shippingoo.mapper.TempUserMapper;
+import com.shippingoo.mapper.UserMapper;
 
 import org.jboss.logging.Logger;
 import org.mapstruct.factory.Mappers;

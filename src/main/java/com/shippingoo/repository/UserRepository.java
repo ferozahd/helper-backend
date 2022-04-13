@@ -2,7 +2,7 @@ package com.shippingoo.repository;
 
 import java.util.Optional;
 
-import com.shippingoo.Entity.User;
+import com.shippingoo.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

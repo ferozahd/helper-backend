@@ -1,14 +1,13 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -22,20 +21,12 @@ public class BuddyList {
     @Column(updatable = false)
     private Long senderId;
 
-    
-    @Column(updatable = false)
-    private String receiverUsername;
+
 
     @Column(updatable = false)
     private Long receiverId;
 
 
-    @Column(updatable = true, nullable = false)
-    private String receiverName;
-
-
-    @Column(updatable = true, nullable = false)
-    private String ReceiverPicture;
 
     // for seen is 0 for unseen -1 and number of unseen is exact value of this raw .
     @Column(columnDefinition = "Boolean default false")
@@ -43,12 +34,11 @@ public class BuddyList {
     
     private Long link;
 
-    @Column(updatable = false, name = "created_at")
-    @CreatedDate
+
+    @Setter(AccessLevel.NONE)
     private LocalDate createdAt;
 
-    @Column(updatable = true, name = "updated_at")
-    @UpdateTimestamp
+    @Setter(AccessLevel.NONE)
     private LocalDateTime updatedAt;
 
     // status 1 is active
@@ -57,11 +47,17 @@ public class BuddyList {
     // -2 that means pending
     private byte status;
 
+    @PreUpdate
+    private void onUpdate(){
+        this.updatedAt=LocalDateTime.now();
+    }
+
     @PrePersist
     private void onCreate() {
         this.status = 1;
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDateTime.now();
+        this.updatedAt= LocalDateTime.now();
     }
 
 }

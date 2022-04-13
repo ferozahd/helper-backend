@@ -1,12 +1,11 @@
-package com.shippingoo.Mapper;
+package com.shippingoo.mapper;
 
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import java.time.LocalDateTime;
 
-import com.shippingoo.Entity.TempoUser;
-import com.shippingoo.Resource.Auth.GetApprovedResources;
-import com.shippingoo.Resource.Auth.PostRegistrationResources;
+import com.shippingoo.entity.TempoUser;
+import com.shippingoo.resource.auth.GetApprovedResources;
+import com.shippingoo.resource.auth.PostRegistrationResources;
 import com.shippingoo.enums.auth.TypeUser;
 import com.shippingoo.exceptions.OperationFailed;
 
@@ -19,7 +18,6 @@ public interface TempUserMapper {
         if (postRegistrationResources == null || token == null)
             return null;
         TempoUser tempoUser = new TempoUser();
-        tempoUser.setCreatedat(LocalDateTime.now());
         tempoUser.setEmail(postRegistrationResources.getEmail());
         tempoUser.setUsername(postRegistrationResources.getUsername());
         switch (postRegistrationResources.getUsertype()) {

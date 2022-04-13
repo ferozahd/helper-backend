@@ -1,8 +1,8 @@
-package com.shippingoo.Service;
+package com.shippingoo.service;
 
-import com.shippingoo.Resource.job.GetJobCatagoriesResources;
-import com.shippingoo.Resource.job.GetJobSubCatagoriesResources;
-import com.shippingoo.Resource.job.GetJobTypeResources;
+import com.shippingoo.resource.job.GetJobCatagoriesResources;
+import com.shippingoo.resource.job.GetJobSubCatagoriesResources;
+import com.shippingoo.resource.job.GetJobTypeResources;
 
 import java.util.List;
 

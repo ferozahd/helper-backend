@@ -1,7 +1,7 @@
-package com.shippingoo.Service;
+package com.shippingoo.service;
 
-import com.shippingoo.Resource.user.GetMeResources;
-import com.shippingoo.Resource.user.PatchUserResources;
+import com.shippingoo.resource.user.GetMeResources;
+import com.shippingoo.resource.user.PatchUserResources;
 
 import org.springframework.web.multipart.MultipartFile;
 

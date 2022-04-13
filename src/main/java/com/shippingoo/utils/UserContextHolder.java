@@ -37,6 +37,7 @@ public class UserContextHolder {
   public static void clear() {
     currentUser.set(null);
   }
+  public  static String getFullName(){return getContext().getFullname();}
 
   public static String getUsername() {
     return getContext().getUsername();

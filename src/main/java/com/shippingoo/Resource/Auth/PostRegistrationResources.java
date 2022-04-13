@@ -1,4 +1,4 @@
-package com.shippingoo.Resource.Auth;
+package com.shippingoo.resource.auth;
 
 import com.shippingoo.enums.auth.TypeUser;
 

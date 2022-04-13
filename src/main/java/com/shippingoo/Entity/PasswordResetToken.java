@@ -1,4 +1,4 @@
-package com.shippingoo.Entity;
+package com.shippingoo.entity;
 
 
 
